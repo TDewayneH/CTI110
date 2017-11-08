@@ -11,3 +11,6 @@ disAfter15 = speed * 15
 print("The distance the car will travel in 6 hours is", disAfter6)
 print("The distance the car will travel in 10 hours is", disAfter10)
 print("The distance the car will travel in 15 hours is", disAfter15)
+
+
+input("/n/nPress enter to exit.")
