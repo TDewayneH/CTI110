@@ -25,4 +25,4 @@ print("Your sales tax is " + str(salesTax))
 print("Your total is " + str(totalCost))
 
 #Just to keep it up until the user is done with the program
-raw_input("\n\nPress enter to exit")
+input("\n\nPress enter to exit")
