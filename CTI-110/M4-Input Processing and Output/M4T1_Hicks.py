@@ -7,7 +7,7 @@
 """
     This code takes the input from the user to calculate the profit
 """
-totalSales = int(input("Please input the projected total sales(whole dollar amount): $"))
+totalSales = float(input("Please input the projected total sales: $"))
 print(\
       """
         Calculating one moment please
