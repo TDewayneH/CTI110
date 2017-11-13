@@ -11,7 +11,7 @@ print("""
 """
     This code calculates all the cost
 """
-foodCost = input("How much was your food? $")
+foodCost = float(input("How much was your food? $"))
 tipAmmount = round(foodCost * .18,2)
 salesTax = round(foodCost * .07,2)
 totalCost = round(foodCost + tipAmmount + salesTax,2)
