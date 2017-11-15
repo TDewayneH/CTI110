@@ -11,6 +11,14 @@ def main():
     print("The factorial of", nonNegative, "is", total)
 
 def factorial(number):
+  numList = list(range(number))
+  num = 1
+  for i in numList:
+    num = num * (numList[i] + 1)
+  return num
+    
+    
+"""  
     num = 1
     while number != 1:
         num = num * number
@@ -18,7 +26,6 @@ def factorial(number):
     return num
         
     
-"""
     if number == 0:
         return 1
     else:
@@ -29,4 +36,3 @@ main()
 
 
 input("\n\nPress enter to exit.")
-
