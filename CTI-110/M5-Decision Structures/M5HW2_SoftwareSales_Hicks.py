@@ -18,15 +18,14 @@ def main():
 
     if(quantity < 10):
         print("You're price is ", quantity * 99)
-    elif(quantity >= 10 and quantity < 20):
+    elif(quantity < 20):
         print("You're price is ", (quantity * 99) / .10)
-    elif(quantity >= 20 and quantity < 50):
+    elif(quantity < 50):
         print("You're price is ", (quantity * 99) / .20)
-    elif(quantity >= 50 and quantity < 100):
+    elif(quantity < 100):
         print("You're price is ", (quantity * 99) / .30)
     else:
-        print("You're price is ", (quantity * 99) / .40)
-    
+        print("You're price is ", (quantity * 99) / .40) 
     
 main()
 
