@@ -18,20 +18,14 @@ def main():
 
     if score >= A_score:
         print('Your grade is: A')
-    elif score < A_score and score >= B_score:
+    elif score >= B_score:
         print('Your grade is: B')
-    elif score < B_score and score >= C_score:
+    elif score >= C_score:
         print('Your grade is: C')
-    elif score < C_score and score >= D_score:
+    elif score >= D_score:
         print('Your grade is: D')
     else:
         print('Your grade is: F')
-
-
-
-
-
-
 
 # program start
 main()
