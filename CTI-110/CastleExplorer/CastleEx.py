@@ -2,7 +2,9 @@
 #CTI-110
 #Dewayne Hicks
 #30NOV17
-import re, sys, random, Monsters, Inventory, colorama
+import re, sys, random, Monsters, Inventory, colorama, pickle
+from pathlib import Path
+
 colorama.init()
 green = "\033[1;32m"
 red = "\033[1;31m"
@@ -28,16 +30,38 @@ gameMap = [
             ]
 invtor = []
 food = 0
+enemKilled = 0
+strKill = []
+
 def main():
     strength = 95
     gold = 50
     maxHP = 10
     HP = maxHP
-
+    highScores = []
     firstLoc = 0
     location = 0
     testingLoc = 0
 
+    saveScore = Path("highScores.dat")
+    if(saveScore.exists()):
+       with open('highScores.dat', 'rb') as file:
+           fhighScores = pickle.load(file)
+           highScores.append(fhighScores)
+    else:
+       with open('highScores.dat','wb') as file:
+           pickle.dump(highScores, file)
+
+    
+    if(len(highScores)>0):
+        print ("High Scores\n")
+        print ("Name\t Score")
+        with open('highScores.dat','rb')as file:
+            highScores = pickle.load(file)
+        for entry in highScores:
+            name, score = entry
+            print(name, "\t", score,"\n")
+            
     name = ''
     while name == '':
         temp = ''
@@ -52,13 +76,19 @@ def main():
 
     firstLoc = gameMap[1]
     location = gameMap[0][1]
-    takeAction(location, firstLoc, strength, gold, invtor, food)
+    takeAction(name, location, firstLoc, strength, gold, invtor,\
+               food, enemKilled, highScores)
 
-def takeAction(location, firstLoc, strength, gold, invtor, food):
+def takeAction(name, location, firstLoc, strength, gold, invtor,\
+               food, enemKilled, highScores):
     canSee = False
     worth = 0
+    score = 0
     fightDragon = True
     print("You can type in Inventory to open your Inventory")
+    if(strength<=0):
+        print("You have died.")
+        sys.exit()
     while True:
         print("Your strength is",strength,"You have",gold,"gold on you")
             
@@ -214,8 +244,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                         strength-=5
                         if(random.randint(1,4) == 2):
                             monsterInt = random.randint(1,4)
-                            strength = Monsters.monster(\
-                                monsterInt, strength, invtor)
+                            strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                            strength = strKill[0]
+                            enemKilled = strKill[1]
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print("There is some treasure in the room"\
@@ -231,8 +263,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                         strength-=5
                         if(random.randint(1,4) == 2):
                             monsterInt = random.randint(1,4)
-                            strength = Monsters.monster(\
-                                monsterInt, strength, invtor)
+                            strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                            strength = strKill[0]
+                            enemKilled = strKill[1]
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print("There is some treasure in the room"\
@@ -249,8 +283,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                         strength-=5
                         if(random.randint(1,4) == 2):
                             monsterInt = random.randint(1,4)
-                            strength = Monsters.monster(\
-                                monsterInt, strength, invtor)
+                            strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                            strength = strKill[0]
+                            enemKilled = strKill[1]
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print("There is some treasure in the room"\
@@ -267,8 +303,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                         strength-=5
                         if(random.randint(1,4) == 2):
                             monsterInt = random.randint(1,4)
-                            strength = Monsters.monster(\
-                                monsterInt, strength, invtor)
+                            strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                            strength = strKill[0]
+                            enemKilled = strKill[1]
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print("There is some treasure in the room"\
@@ -285,8 +323,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                         strength-=5
                         if(random.randint(1,4) == 2):
                             monsterInt = random.randint(1,4)
-                            strength = Monsters.monster(\
-                                monsterInt, strength, invtor)
+                            strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                            strength = strKill[0]
+                            enemKilled = strKill[1]
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print("There is some treasure in the room"\
@@ -310,8 +350,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                         strength-=5
                         if(random.randint(1,4) == 2):
                             monsterInt = random.randint(1,4)
-                            strength = Monsters.monster(\
-                                monsterInt, strength, invtor)
+                            strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                            strength = strKill[0]
+                            enemKilled = strKill[1]
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print("There is some treasure in the room"\
@@ -328,8 +370,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                         strength-=5
                         if(random.randint(1,4) == 2):
                             monsterInt = random.randint(1,4)
-                            strength = Monsters.monster(\
-                                monsterInt, strength, invtor)
+                            strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                            strength = strKill[0]
+                            enemKilled = strKill[1]
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print("There is some treasure in the room"\
@@ -346,8 +390,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                         strength-=5
                         if(random.randint(1,4) == 2):
                             monsterInt = random.randint(1,4)
-                            strength = Monsters.monster(\
-                                monsterInt, strength, invtor)
+                            strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                            strength = strKill[0]
+                            enemKilled = strKill[1]
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print("There is some treasure in the room"\
@@ -364,8 +410,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                         strength-=5
                         if(random.randint(1,4) == 2):
                             monsterInt = random.randint(1,4)
-                            strength = Monsters.monster(\
-                                monsterInt, strength, invtor)
+                            strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                            strength = strKill[0]
+                            enemKilled = strKill[1]
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print("There is some treasure in the room"\
@@ -382,8 +430,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                         strength-=5
                         if(random.randint(1,4) == 2):
                             monsterInt = random.randint(1,4)
-                            strength = Monsters.monster(\
-                                monsterInt, strength, invtor)
+                            strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                            strength = strKill[0]
+                            enemKilled = strKill[1]
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print("There is some treasure in the room"\
@@ -406,8 +456,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                         strength-=5
                         if(random.randint(1,4) == 2):
                             monsterInt = random.randint(1,4)
-                            strength = Monsters.monster(\
-                                monsterInt, strength, invtor)
+                            strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                            strength = strKill[0]
+                            enemKilled = strKill[1]
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print("There is some treasure in the room"\
@@ -424,8 +476,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                         strength-=5
                         if(random.randint(1,4) == 2):
                             monsterInt = random.randint(1,4)
-                            strength = Monsters.monster(\
-                                monsterInt, strength, invtor)
+                            strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                            strength = strKill[0]
+                            enemKilled = strKill[1]
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print("There is some treasure in the room"\
@@ -442,8 +496,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                         strength-=5
                         if(random.randint(1,4) == 2):
                             monsterInt = random.randint(1,4)
-                            strength = Monsters.monster(\
-                                monsterInt, strength, invtor)
+                            strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                            strength = strKill[0]
+                            enemKilled = strKill[1]
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print("There is some treasure in the room"\
@@ -460,8 +516,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                         strength-=5
                         if(random.randint(1,4) == 2):
                             monsterInt = random.randint(1,4)
-                            strength = Monsters.monster(\
-                                monsterInt, strength, invtor)
+                            strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                            strength = strKill[0]
+                            enemKilled = strKill[1]
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print("There is some treasure in the room"\
@@ -474,12 +532,19 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                 elif(location == 13):
                     if(strength>0):
                         if(fightDragon):
-                            strength = Monsters.monster(\
-                                5, strength, invtor)
+                            strKill = Monsters.monster(\
+                                    5, strength, enemKilled, invtor)
+                            strength = strKill[0]
+                            enemKilled = strKill[1]
                             fightDragon = False
                         else:
                             firstLoc = gameMap[13]
                             location = 14
+                            score = enemKilled + gold + strength + (food*2)
+                            entry = (str(name), score)
+                            highScores.append(entry)
+                            with open('highScores.dat','wb')as file:
+                                pickle.dump(highScores, file)
                             sys.exit()
                             
                             
@@ -498,8 +563,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                         strength-=5
                         if(random.randint(1,4) == 2):
                             monsterInt = random.randint(1,4)
-                            strength = Monsters.monster(\
-                                monsterInt, strength, invtor)
+                            strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                            strength = strKill[0]
+                            enemKilled = strKill[1]
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print("There is some treasure in the room"\
@@ -516,8 +583,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                         strength-=5
                         if(random.randint(1,4) == 2):
                             monsterInt = random.randint(1,4)
-                            strength = Monsters.monster(\
-                                monsterInt, strength, invtor)
+                            strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                            strength = strKill[0]
+                            enemKilled = strKill[1]
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print("There is some treasure in the room"\
@@ -534,8 +603,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                         strength-=5
                         if(random.randint(1,4) == 2):
                             monsterInt = random.randint(1,4)
-                            strength = Monsters.monster(\
-                                monsterInt, strength, invtor)
+                            strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                            strength = strKill[0]
+                            enemKilled = strKill[1]
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print("There is some treasure in the room"\
@@ -552,8 +623,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                         strength-=5
                         if(random.randint(1,4) == 2):
                             monsterInt = random.randint(1,4)
-                            strength = Monsters.monster(\
-                                monsterInt, strength, invtor)
+                            strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                            strength = strKill[0]
+                            enemKilled = strKill[1]
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print("There is some treasure in the room"\
@@ -576,8 +649,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                             strength-=5
                             if(random.randint(1,4) == 2):
                                 monsterInt = random.randint(1,4)
-                                strength = Monsters.monster(\
-                                    monsterInt, strength, invtor)
+                                strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                                strength = strKill[0]
+                                enemKilled = strKill[1]
                             elif(random.randint(1,4) == 4):
                                 worth = random.randint(10, 100)
                                 print("There is some treasure in the room"\
@@ -593,8 +668,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                             strength-=5
                             if(random.randint(1,4) == 2):
                                 monsterInt = random.randint(1,4)
-                                strength = Monsters.monster(\
-                                    monsterInt, strength, invtor)
+                                strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                                strength = strKill[0]
+                                enemKilled = strKill[1]
                             elif(random.randint(1,4) == 4):
                                 worth = random.randint(10, 100)
                                 print("There is some treasure in the room"\
@@ -617,8 +694,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                             strength-=5
                             if(random.randint(1,4) == 2):
                                 monsterInt = random.randint(1,4)
-                                strength = Monsters.monster(\
-                                    monsterInt, strength, invtor)
+                                strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                                strength = strKill[0]
+                                enemKilled = strKill[1]
                             elif(random.randint(1,4) == 4):
                                 worth = random.randint(10, 100)
                                 print("There is some treasure in the room"\
@@ -634,8 +713,10 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
                             strength-=5
                             if(random.randint(1,4) == 2):
                                 monsterInt = random.randint(1,4)
-                                strength = Monsters.monster(\
-                                    monsterInt, strength, invtor)
+                                strKill = Monsters.monster(\
+                                    monsterInt, strength, enemKilled, invtor)
+                                strength = strKill[0]
+                                enemKilled = strKill[1]
                             elif(random.randint(1,4) == 4):
                                 worth = random.randint(10, 100)
                                 print("There is some treasure in the room"\
@@ -652,7 +733,8 @@ def takeAction(location, firstLoc, strength, gold, invtor, food):
         
         elif("inventory" in move.lower() or "inv" in move.lower()):
             print("You are opening your Inv")
-            Inventory.openInventory(location, firstLoc, strength, gold, invtor, food)
+            Inventory.openInventory(name, location, firstLoc, strength, gold,\
+                                    invtor, food, enemKilled, highScores)
         elif("get" in move.lower()):
             if(worth!=0):
                 print("You picked up the treasure and got",worth,"gold")
