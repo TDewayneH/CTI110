@@ -4,7 +4,8 @@ red = "\033[1;31m"
 yellow = "\033[1;33m"
 end = "\033[0;0m"
 
-def openInventory(location, firstLoc, strength, gold, invtor, food):
+def openInventory(name, location, firstLoc, strength, gold, invtor, food,\
+                  enemKilled, highScores):
 #(gold,food,invtor=[]):
     while True:
         if(len(invtor)>0 and food>0):
@@ -105,7 +106,7 @@ def openInventory(location, firstLoc, strength, gold, invtor, food):
             if(gold>=choice2*2):
                 print("You bought",choice2,"amouth of food for",choice2*2)
                 gold -= choice2*2
-                food = choice2
+                food += choice2
                 
             else:
                 print(red+"You don't have enough gold."+end)
@@ -133,4 +134,5 @@ def openInventory(location, firstLoc, strength, gold, invtor, food):
                 print(red+"You don't have enough gold."+end)
                 
         elif(choice == 0):
-            CastleEx.takeAction(location, firstLoc, strength, gold, invtor, food)
+            CastleEx.takeAction(name, location, firstLoc, strength, gold,\
+                                invtor, food, enemKilled, highScores)
