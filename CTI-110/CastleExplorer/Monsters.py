@@ -1,4 +1,4 @@
-import colorama, random
+import colorama, random, sys
 colorama.init()
 
 def monster(monsterInt, strength, invtor=[]):
@@ -11,8 +11,8 @@ def monster(monsterInt, strength, invtor=[]):
     while monsterLive:
         if(monsterInt == 1):
             print(red + "A zombie appears in front of you!" + end\
-                  + "Use Attack or Run")
-            choice = input("What will you do?")
+                  + " Use Attack or Run")
+            choice = input("What will you do? ")
             if("attack" in choice.lower()):
                 if("Axe" in invtor):
                     print("You use your axe and cut the zombie down!")
@@ -71,7 +71,7 @@ def monster(monsterInt, strength, invtor=[]):
         elif(monsterInt == 2):
             print(red + "A wolf appears in front of you!" + end +\
                   " Use Attack or run.")
-            choice = input("What will you do?")
+            choice = input("What will you do? ")
             if("attack" in choice.lower()):
                 if("Axe" in invtor):
                     print("You use your axe and cut the wolf down!")
@@ -127,10 +127,10 @@ def monster(monsterInt, strength, invtor=[]):
             else:
                 print("False input")
                 monster(monsterInt,strength,invtor)
-        elif(monsterInt == 3):
+        elif(monsterInt == 5):
             print(blue + "A dragon appears in front of you!" + end +\
-                  "You can't run from this powerful enemy")
-            choice = input("What will you do?")
+                  " You can't run from this powerful enemy")
+            choice = input("What will you do? ")
             if("attack" in choice.lower()):
                 if("Axe" in invtor):
                     if("Magic Amulet" in invtor):
@@ -189,8 +189,8 @@ def monster(monsterInt, strength, invtor=[]):
                 monster(monsterInt,strength,invtor)
         else:
             print(red +"A slime monster appears in front of you!" + end\
-                  + "Use Attack or Run")
-            choice = input("What will you do?")
+                  + " Use Attack or Run")
+            choice = input("What will you do? ")
             if("attack" in choice.lower()):
                 if("Axe" in invtor):
                     print("You use your axe to attack and kill the monster")
