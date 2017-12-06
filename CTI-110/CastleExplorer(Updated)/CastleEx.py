@@ -52,10 +52,17 @@ def main():
        with open('highScores.dat','wb') as file:
            pickle.dump(highScores, file)
     while True:
-        choice = int(input("""
-                To view high scores enter 1,
-                To start the game enter 2
-                """))
+        choice = ''
+        while choice == '':
+                temp = ''
+                temp = input("""
+                            To view high scores enter 1,
+                            To start the game enter 2
+                            """)
+                if not re.match("^[0-9]*$", temp):
+                    print(red + "Pleae only use numbers" + end)
+                else:
+                    choice = int(temp)
         if(choice == 1):
             if(len(highScores)>0):
                 print ("High Scores\n")
@@ -65,8 +72,7 @@ def main():
                 for entry in highScores:
                     name, score = entry
                     print(name, "\t", score,"\n")
-        else:
-                
+        elif(choice == 2):    
             name = ''
             while name == '':
                 temp = ''
@@ -83,6 +89,8 @@ def main():
             location = gameMap[0][1]
             takeAction(name, location, firstLoc, strength, gold, invtor,\
                        food, enemKilled, highScores)
+        else:
+            print(red+"Invalid input!"+end)
 
 def takeAction(name, location, firstLoc, strength, gold, invtor,\
                food, enemKilled, highScores):
@@ -90,13 +98,21 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
     worth = 0
     score = 0
     fightDragon = True
+    
     print("You can type in Inventory to open your Inventory")
     if(strength<=0):
         print("You have died.")
         input("Press enter to exit.")
         sys.exit()
     while True:
-        print("Your strength is",strength,"You have",gold,"gold on you")
+        if(strength<=20):
+            print(red+"Your strenght is low you might want to eat something!"\
+                      +end)
+            print("Your strength is"+red,strength,end+"You have"\
+                  +yellow,gold,end+"gold on you")
+        else:
+            print("Your strength is"+red,strength,end+"You have"\
+              +yellow,gold,end+"gold on you")
             
         if(location == 1):
             print(green + "You are in the game room. You see a pool table"\
@@ -256,8 +272,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                    " The treasure is worth ",worth,\
+                                    " gold use get to pick it up."+end)
                     else:
                        print("You have ran out of strength and died.")
                 elif(location == 4):
@@ -272,8 +288,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                " The treasure is worth ",worth,\
+                                " gold use get to pick it up."+end)
                           
                     else:
                         print("You have ran out of strength and died.")
@@ -289,8 +305,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                " The treasure is worth ",worth,\
+                                " gold use get to pick it up."+end)
                             
                     else:
                         print("You have ran out of strength and died.")
@@ -306,8 +322,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                    " The treasure is worth ",worth,\
+                                    " gold use get to pick it up."+end)
                             
                     else:
                         print("You have ran out of strength and died.")
@@ -323,8 +339,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                " The treasure is worth ",worth,\
+                                " gold use get to pick it up."+end)
                             
                     else:
                         print("You have ran out of strength and died.")
@@ -347,8 +363,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                " The treasure is worth ",worth,\
+                                " gold use get to pick it up."+end)
                             
                     else:
                         print("You have ran out of strength and died.")
@@ -364,8 +380,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                " The treasure is worth ",worth,\
+                                " gold use get to pick it up."+end)
                             
                     else:
                         print("You have ran out of strength and died.")
@@ -381,8 +397,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                " The treasure is worth ",worth,\
+                                " gold use get to pick it up."+end)
                             
                     else:
                         print("You have ran out of strength and died.")
@@ -398,8 +414,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                " The treasure is worth ",worth,\
+                                " gold use get to pick it up."+end)
                             
                     else:
                         print("You have ran out of strength and died.")
@@ -415,8 +431,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                " The treasure is worth ",worth,\
+                                " gold use get to pick it up."+end)
                             
                     else:
                         print("You have ran out of strength and died.")
@@ -438,8 +454,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                " The treasure is worth ",worth,\
+                                " gold use get to pick it up."+end)
                             
                     else:
                         print("You have ran out of strength and died.")
@@ -455,8 +471,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                " The treasure is worth ",worth,\
+                                " gold use get to pick it up."+end)
                             
                     else:
                         print("You have ran out of strength and died.")
@@ -472,8 +488,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                " The treasure is worth ",worth,\
+                                " gold use get to pick it up."+end)
                             
                     else:
                         print("You have ran out of strength and died.")
@@ -489,8 +505,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                " The treasure is worth ",worth,\
+                                " gold use get to pick it up."+end)
                             
                     else:
                         print("You have ran out of strength and died.")
@@ -532,8 +548,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                " The treasure is worth ",worth,\
+                                " gold use get to pick it up."+end)
                             
                     else:
                         print("You have ran out of strength and died.")
@@ -549,8 +565,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                " The treasure is worth ",worth,\
+                                " gold use get to pick it up."+end)
                             
                     else:
                         print("You have ran out of strength and died.")
@@ -566,8 +582,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                " The treasure is worth ",worth,\
+                                " gold use get to pick it up."+end)
                             
                     else:
                         print("You have ran out of strength and died.")
@@ -583,8 +599,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                         elif(random.randint(1,4) == 4):
                             worth = random.randint(10, 100)
                             print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                " The treasure is worth ",worth,\
+                                " gold use get to pick it up."+end)
                             
                     else:
                         print("You have ran out of strength and died.")
@@ -606,8 +622,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             elif(random.randint(1,4) == 4):
                                 worth = random.randint(10, 100)
                                 print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                " The treasure is worth ",worth,\
+                                " gold use get to pick it up."+end)
                         else:
                             print("You have ran out of strength and died.")
                 elif(location == 11):
@@ -622,8 +638,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             elif(random.randint(1,4) == 4):
                                 worth = random.randint(10, 100)
                                 print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                    " The treasure is worth ",worth,\
+                                    " gold use get to pick it up."+end)
                                 
                         else:
                             print("You have ran out of strength and died.")
@@ -645,8 +661,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             elif(random.randint(1,4) == 4):
                                 worth = random.randint(10, 100)
                                 print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                    " The treasure is worth ",worth,\
+                                    " gold use get to pick it up."+end)
                         else:
                             print("You have ran out of strength and died.")
                 elif(location == 4):
@@ -661,8 +677,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             elif(random.randint(1,4) == 4):
                                 worth = random.randint(10, 100)
                                 print(yellow+"There is some treasure in the room"\
-                                  " The treasure is worth",worth,\
-                                  "gold use get to pick it up."+end)
+                                    " The treasure is worth ",worth,\
+                                    " gold use get to pick it up."+end)
                                 
                         else:
                             print("You have ran out of strength and died.")
@@ -679,6 +695,7 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
             if(worth!=0):
                 print("You picked up the treasure and got",worth,"gold")
                 gold += worth
+                worth = 0
             else:
                 print("There isn't anything around worth taking")
         else:
