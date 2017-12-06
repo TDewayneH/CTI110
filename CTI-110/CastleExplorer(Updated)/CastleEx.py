@@ -276,6 +276,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                                     " gold use get to pick it up."+end)
                     else:
                        print("You have ran out of strength and died.")
+                       input("Press enter to exit")
+                       sys.exit()
                 elif(location == 4):
                     if(strength>0):
                         firstLoc = gameMap[2]
@@ -293,6 +295,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                           
                     else:
                         print("You have ran out of strength and died.")
+                        input("Press enter to exit")
+                        sys.exit()
                 elif(location == 5):
                     if(strength>0):
                         firstLoc = gameMap[3]
@@ -310,6 +314,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             
                     else:
                         print("You have ran out of strength and died.")
+                        input("Press enter to exit")
+                        sys.exit()
                 elif(location == 9):
                     if(strength>0):
                         firstLoc = gameMap[7]
@@ -327,6 +333,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             
                     else:
                         print("You have ran out of strength and died.")
+                        input("Press enter to exit")
+                        sys.exit()
                 elif(location == 13):
                     if(strength>0):
                         firstLoc = gameMap[11]
@@ -368,6 +376,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             
                     else:
                         print("You have ran out of strength and died.")
+                        input("Press enter to exit")
+                        sys.exit()
                 elif(location == 3):
                     if(strength>0):
                         firstLoc = gameMap[3]
@@ -385,6 +395,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             
                     else:
                         print("You have ran out of strength and died.")
+                        input("Press enter to exit")
+                        sys.exit()
                 elif(location == 4):
                     if(strength>0):
                         firstLoc = gameMap[4]
@@ -402,6 +414,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             
                     else:
                         print("You have ran out of strength and died.")
+                        input("Press enter to exit")
+                        sys.exit()
                 elif(location == 8):
                     if(strength>0):
                         firstLoc = gameMap[8]
@@ -419,6 +433,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             
                     else:
                         print("You have ran out of strength and died.")
+                        input("Press enter to exit")
+                        sys.exit()
                 elif(location == 12):
                     if(strength>0):
                         firstLoc = gameMap[12]
@@ -436,6 +452,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             
                     else:
                         print("You have ran out of strength and died.")
+                        input("Press enter to exit")
+                        sys.exit()
                 else:
                     print("Shouldn't see this")
             else:
@@ -459,6 +477,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             
                     else:
                         print("You have ran out of strength and died.")
+                        input("Press enter to exit")
+                        sys.exit()
                 elif(location == 5):
                     if(strength>0):
                         firstLoc = gameMap[1]
@@ -476,6 +496,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             
                     else:
                         print("You have ran out of strength and died.")
+                        input("Press enter to exit")
+                        sys.exit()
                 elif(location == 8):
                     if(strength>0):
                         firstLoc = gameMap[6]
@@ -493,6 +515,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             
                     else:
                         print("You have ran out of strength and died.")
+                        input("Press enter to exit")
+                        sys.exit()
                 elif(location == 12):
                     if(strength>0):
                         firstLoc = gameMap[10]
@@ -510,6 +534,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             
                     else:
                         print("You have ran out of strength and died.")
+                        input("Press enter to exit")
+                        sys.exit()
                 elif(location == 13):
                     if(strength>0):
                         if(fightDragon):
@@ -530,6 +556,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             
                     else:
                         print("You have ran out of strength and died.")
+                        input("Press enter to exit")
+                        sys.exit()
                 else:
                     print("Shouldn't see this")
             else:
@@ -553,6 +581,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             
                     else:
                         print("You have ran out of strength and died.")
+                        input("Press enter to exit")
+                        sys.exit()
                 elif(location == 2):
                     if(strength>0):
                         firstLoc = gameMap[4]
@@ -570,6 +600,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             
                     else:
                         print("You have ran out of strength and died.")
+                        input("Press enter to exit")
+                        sys.exit()
                 elif(location == 7):
                     if(strength>0):
                         firstLoc = gameMap[7]
@@ -587,6 +619,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             
                     else:
                         print("You have ran out of strength and died.")
+                        input("Press enter to exit")
+                        sys.exit()
                 elif(location == 11):
                     if(strength>0):
                         firstLoc = gameMap[11]
@@ -604,6 +638,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                             
                     else:
                         print("You have ran out of strength and died.")
+                        input("Press enter to exit")
+                        sys.exit()
                 else:
                     print("Shouldn't see this")
             else:
@@ -626,6 +662,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                                 " gold use get to pick it up."+end)
                         else:
                             print("You have ran out of strength and died.")
+                            input("Press enter to exit")
+                            sys.exit()
                 elif(location == 11):
                         if(strength>0):
                             firstLoc = gameMap[3]
@@ -643,6 +681,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                                 
                         else:
                             print("You have ran out of strength and died.")
+                            input("Press enter to exit")
+                            sys.exit()
                 else:
                     print("You shouldn't see this.")
             else:
@@ -665,6 +705,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                                     " gold use get to pick it up."+end)
                         else:
                             print("You have ran out of strength and died.")
+                            input("Press enter to exit")
+                            sys.exit()
                 elif(location == 4):
                         if(strength>0):
                             firstLoc = gameMap[10]
@@ -682,6 +724,8 @@ def takeAction(name, location, firstLoc, strength, gold, invtor,\
                                 
                         else:
                             print("You have ran out of strength and died.")
+                            input("Press enter to exit")
+                            sys.exit()
                 else:
                     print("You shouldn't see this.")
             else:
